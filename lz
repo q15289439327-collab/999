@@ -1,0 +1,130 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Player = Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
+
+local UI = Instance.new("ScreenGui")
+UI.Name = "墨水游戏加载器"
+UI.Parent = Player.PlayerGui
+UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "主菜单"
+MainFrame.Size = UDim2.new(0.3, 0, 0.6, 0)
+MainFrame.Position = UDim2.new(0.35, 0, 0.2, 0)
+MainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+MainFrame.BorderColor3 = Color3.new(0.5, 0.2, 0.8)
+MainFrame.BorderSizePixel = 2
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Parent = UI
+
+local Title = Instance.new("TextLabel")
+Title.Name = "标题"
+Title.Size = UDim2.new(1, 0, 0.15, 0)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "墨水游戏 - 多功能加载器"
+Title.TextColor3 = Color3.new(0.8, 0.4, 1)
+Title.TextSize = 24
+Title.Font = Enum.Font.SourceSansBold
+Title.Parent = MainFrame
+
+local AutoCollectBtn = Instance.new("TextButton")
+AutoCollectBtn.Name = "自动收集"
+AutoCollectBtn.Size = UDim2.new(0.8, 0, 0.1, 0)
+AutoCollectBtn.Position = UDim2.new(0.1, 0, 0.2, 0)
+AutoCollectBtn.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+AutoCollectBtn.Text = "启用自动收集"
+AutoCollectBtn.TextColor3 = Color3.new(1, 1, 1)
+AutoCollectBtn.TextSize = 18
+AutoCollectBtn.Font = Enum.Font.SourceSans
+AutoCollectBtn.MouseButton1Click:Connect(function()
+    local Notification = Instance.new("TextLabel")
+    Notification.Size = UDim2.new(0.2, 0, 0.05, 0)
+    Notification.Position = UDim2.new(0.4, 0, 0.85, 0)
+    Notification.BackgroundColor3 = Color3.new(0, 0.5, 0)
+    Notification.Text = "自动收集已启用"
+    Notification.TextColor3 = Color3.new(1, 1, 1)
+    Notification.TextSize = 16
+    Notification.Font = Enum.Font.SourceSans
+    Notification.Parent = UI
+    task.delay(3, function() Notification:Destroy() end)
+end)
+AutoCollectBtn.Parent = MainFrame
+
+local AutoFarmBtn = Instance.new("TextButton")
+AutoFarmBtn.Name = "自动 Farming"
+AutoFarmBtn.Size = UDim2.new(0.8, 0, 0.1, 0)
+AutoFarmBtn.Position = UDim2.new(0.1, 0, 0.35, 0)
+AutoFarmBtn.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+AutoFarmBtn.Text = "启用自动 Farming"
+AutoFarmBtn.TextColor3 = Color3.new(1, 1, 1)
+AutoFarmBtn.TextSize = 18
+AutoFarmBtn.Font = Enum.Font.SourceSans
+AutoFarmBtn.MouseButton1Click:Connect(function()
+    local Notification = Instance.new("TextLabel")
+    Notification.Size = UDim2.new(0.2, 0, 0.05, 0)
+    Notification.Position = UDim2.new(0.4, 0, 0.85, 0)
+    Notification.BackgroundColor3 = Color3.new(0, 0.5, 0)
+    Notification.Text = "自动 Farming 已启用"
+    Notification.TextColor3 = Color3.new(1, 1, 1)
+    Notification.TextSize = 16
+    Notification.Font = Enum.Font.SourceSans
+    Notification.Parent = UI
+    task.delay(3, function() Notification:Destroy() end)
+end)
+AutoFarmBtn.Parent = MainFrame
+
+local AutoUpgradeBtn = Instance.new("TextButton")
+AutoUpgradeBtn.Name = "自动升级"
+AutoUpgradeBtn.Size = UDim2.new(0.8, 0, 0.1, 0)
+AutoUpgradeBtn.Position = UDim2.new(0.1, 0, 0.5, 0)
+AutoUpgradeBtn.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+AutoUpgradeBtn.Text = "启用自动升级"
+AutoUpgradeBtn.TextColor3 = Color3.new(1, 1, 1)
+AutoUpgradeBtn.TextSize = 18
+AutoUpgradeBtn.Font = Enum.Font.SourceSans
+AutoUpgradeBtn.MouseButton1Click:Connect(function()
+    local Notification = Instance.new("TextLabel")
+    Notification.Size = UDim2.new(0.2, 0, 0.05, 0)
+    Notification.Position = UDim2.new(0.4, 0, 0.85, 0)
+    Notification.BackgroundColor3 = Color3.new(0, 0.5, 0)
+    Notification.Text = "自动升级已启用"
+    Notification.TextColor3 = Color3.new(1, 1, 1)
+    Notification.TextSize = 16
+    Notification.Font = Enum.Font.SourceSans
+    Notification.Parent = UI
+    task.delay(3, function() Notification:Destroy() end)
+end)
+AutoUpgradeBtn.Parent = MainFrame
+
+local CloseBtn = Instance.new("TextButton")
+CloseBtn.Name = "关闭"
+CloseBtn.Size = UDim2.new(0.8, 0, 0.1, 0)
+CloseBtn.Position = UDim2.new(0.1, 0, 0.65, 0)
+CloseBtn.BackgroundColor3 = Color3.new(0.5, 0.1, 0.1)
+CloseBtn.Text = "关闭加载器"
+CloseBtn.TextColor3 = Color3.new(1, 1, 1)
+CloseBtn.TextSize = 18
+CloseBtn.Font = Enum.Font.SourceSans
+CloseBtn.MouseButton1Click:Connect(function()
+    UI:Destroy()
+end)
+CloseBtn.Parent = MainFrame
+
+-- 快捷键监听（F5 显示/隐藏菜单）
+UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent and input.KeyCode == Enum.KeyCode.F5 then
+        MainFrame.Visible = not MainFrame.Visible
+    end
+end)
+
+-- 角色复活监听
+Player.CharacterAdded:Connect(function(newChar)
+    Character = newChar
+    Humanoid = Character:WaitForChild("Humanoid")
+end)
